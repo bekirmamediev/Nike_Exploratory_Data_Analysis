@@ -26,9 +26,9 @@ completion_per_age as(
 -- Calculate completion rate for each product within each age group
 SELECT 
 	c.age_group
-  , MAX(rate)
+  , MAX(rate) as completion_per_age
   , p.product_name
-  , CAST(SUM(CASE WHEN n.delivered_at is NOT NULL and n.returned_at is NULL THEN 1 ELSE 0 END) as decimal)/ CAST(COUNT(*) as decimal) as rate
+  , CAST(SUM(CASE WHEN n.delivered_at is NOT NULL and n.returned_at is NULL THEN 1 ELSE 0 END) as decimal)/ CAST(COUNT(*) as decimal) as completion_per_age_and_product_name
 FROM customers c
 INNER JOIN nike n 
 ON c.customer_id = n.user_id 
