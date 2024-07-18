@@ -1,6 +1,7 @@
 # Nike_Exploratory_Data_Analysis
 
-This project involves analyzing Nike product orders to derive valuable insights into order completion rates. By addressing four key questions, the project aims to provide a comprehensive understanding of order item completion rates by product and age group. Each question is answered using specific SQL queries, and the results are presented in a clear and structured manner. An index.html file is included for easy navigation through the questions and their corresponding analyses.
+This project involves analyzing Nike product orders to derive valuable insights into order completion rates. By addressing four key questions, the project aims to provide a comprehensive understanding of order item completion rates by product and age group. Each question is answered using specific SQL queries, and the results are presented in a clear and structured manner. 
+An index.html file is included for easy navigation through the questions and their corresponding analyses.
 
 ## Dataset overview:
 
