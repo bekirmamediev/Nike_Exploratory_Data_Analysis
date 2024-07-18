@@ -6,6 +6,7 @@
 --Show the products only where the product name is available 
 --and show the products with highest completion rate first in the table.
 
+-- Combine order items from both Nike Official and Nike Vintage
 WITH nike AS (
 	SELECT *
   FROM order_items
@@ -13,13 +14,12 @@ WITH nike AS (
   SELECT *
   FROM order_items_vintage
 )
+-- Calculate the completion rate for each product
 SELECT 
 	p.product_name
-  , COUNT(*) as total
-  , SUM (CASE WHEN n.delivered_at is NOT NULL and n.returned_at is NULL THEN 1 ELSE 0 END) as completed
   , CAST(SUM(CASE WHEN n.delivered_at is NOT NULL and n.returned_at is NULL THEN 1 ELSE 0 END) as decimal)/ CAST(COUNT(*) as decimal) as rate
 FROM products p
 INNER JOIN nike n 
 ON p.product_id = n.product_id 
 GROUP BY p.product_name
-ORDER BY 4 DESC;
+ORDER BY 2 DESC;

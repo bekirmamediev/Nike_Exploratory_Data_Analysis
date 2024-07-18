@@ -2,6 +2,7 @@
 --for the Nike Official business ordered by product name.
 --Include the order items where the product name is available.
 
+-- Calculate the total order items per product name
 WITH total AS(
   SELECT 
 	  pr.product_name 
@@ -10,6 +11,7 @@ WITH total AS(
   INNER JOIN order_items oi ON pr.product_id = oi.product_id
   GROUP BY pr.product_name
 )
+-- Calculate the rolling sum of order items
 SELECT 
 	product_name 
   , SUM(total_order)OVER(ORDER BY product_name)

@@ -1,4 +1,6 @@
 --What the order item completion rate (number of completed order items divided by total number of order items) by age group?
+
+-- Combine order items from both Nike Official and Nike Vintage
 WITH nike AS (
 	SELECT *
     FROM order_items
@@ -6,6 +8,7 @@ WITH nike AS (
     SELECT *
     FROM order_items_vintage
 )
+-- Calculate the completion rate for each age group
 SELECT 
 	c.age_group
   , COUNT(*) as total

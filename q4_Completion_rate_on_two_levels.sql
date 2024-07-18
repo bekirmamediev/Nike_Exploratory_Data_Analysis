@@ -5,6 +5,7 @@
 --Create a table that includes the following columns: age group, order item completion rate by age group, product name, and order item completion rate by age group and product name.
 --Only include customers for who the age group is available.
 
+-- Combine order items from both Nike Official and Nike Vintage
 WITH nike AS (
 	SELECT *
      FROM order_items
@@ -12,7 +13,7 @@ WITH nike AS (
     SELECT *
     FROM order_items_vintage
 ), 
-
+-- Calculate completion rate per age group
 completion_per_age as(
 	SELECT 
 	c.age_group
@@ -22,7 +23,7 @@ completion_per_age as(
 	ON c.customer_id = n.user_id 
 	GROUP BY c.age_group
 )
-
+-- Calculate completion rate for each product within each age group
 SELECT 
 	c.age_group
   , MAX(rate)
